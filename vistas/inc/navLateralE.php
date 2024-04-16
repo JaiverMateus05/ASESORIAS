@@ -15,8 +15,15 @@
 							<a href="<?php echo SERVERURL; ?>home/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Inicio</a>
 						</li>
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Mis Asesorias <i class="fas fa-chevron-down"></i></a>
-							
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Asesorias <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="<?php echo SERVERURL; ?>advisor-agenda/"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Buscar Asesores</a>
+								</li>
+								<li>
+									<a href="<?php echo SERVERURL; ?>my-agenda-E/"><i class="fa fa-book"></i> &nbsp; Mis Asesorias</a>
+								</li>
+							</ul>
 						</li>
 						
 

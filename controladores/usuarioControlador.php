@@ -128,13 +128,13 @@ class usuarioControlador extends usuarioModelo
         $pagina = (isset($pagina) && $pagina > 0) ? (int) $pagina : 1;
         $inicio = ($pagina > 0) ? (($pagina * $registros) - $registros) : 0;
 
-        if (isset($busqueda) && $busqueda != "") {
+        if (isset($busqueda) && $busqueda !="") {
 
-            $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM usuarios WHERE ((id!='$id' AND id!='1') AND (nombre_usuario LIKE '%$busqueda%' OR apellido_usuario LIKE '%$busqueda%')) ORDER BY nombre_usuario ASC LIMIT $inicio,$registros";
+            $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM usuarios WHERE ((id!='$id' AND id!='1') AND (nombre_usuario LIKE '%$busqueda%' OR apellido_usuario LIKE '%$busqueda%')) ORDER BY nombre_usuario ASC LIMIT $inicio,$registros";            
         } else {
 
             $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM usuarios WHERE id!='$id' AND id!='1' ORDER BY nombre_usuario ASC LIMIT $inicio,$registros";
-
+        }
             $conexion = mainModel::conectar();
             $datos = $conexion->query($consulta);
             $datos = $datos->fetchAll();
@@ -199,7 +199,7 @@ class usuarioControlador extends usuarioModelo
                         </td></tr>
                         ';
                 } else {
-                    $tabla .= '<tr class="text-center"><td colspan="9">No hay registros en el sistea</td></tr>
+                    $tabla .= '<tr class="text-center"><td colspan="9">No hay registros en el sistema</td></tr>
                         ';
                 }
             }
@@ -212,7 +212,7 @@ class usuarioControlador extends usuarioModelo
                 $tabla .= mainModel::paginador_tablas($pagina, $Npaginas, $url, 5);
             }
             return $tabla;
-        }
+        
     }
 
     public function eliminar_usuario_controlador()

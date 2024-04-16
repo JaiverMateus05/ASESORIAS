@@ -13,7 +13,7 @@ if(isset($_POST['especialidad_nombre_reg']) || isset($_POST['especialidad_id_del
     }
 
     if(isset($_POST['especialidad_id_del'])){
-        echo $ins_espec->eliminar_usuario_controlador();
+        echo $ins_espec->eliminar_especialidad_controlador();
 
     }
 

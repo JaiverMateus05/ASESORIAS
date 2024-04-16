@@ -16,7 +16,11 @@
 						</li>
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Asesorias <i class="fas fa-chevron-down"></i></a>
-							
+							<ul>
+								<li>
+								    <a href="<?php echo SERVERURL; ?>my-agenda-A/"><i class="fa fa-book"></i> &nbsp; Mis Asesorias</a>
+								</li>
+							</ul>
 						</li>
 						
 

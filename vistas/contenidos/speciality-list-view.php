@@ -25,7 +25,7 @@
 				require_once "./controladores/especialidadControlador.php";
 				$ins_espec = new especialidadControlador();
 
-				echo $ins_espec->paginar_especialidad_controlador($pagina[1],15,$pagina[0],"");
+				echo $ins_espec->paginar_especialidad_controlador($pagina[1],5,$pagina[0],"");
 				?>
 
 			</div>
