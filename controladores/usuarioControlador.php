@@ -153,6 +153,7 @@ class usuarioControlador extends usuarioModelo
                         <th>APELLIDO</th>
                         <th>EMAIL</th>
                         <th>ROL</th>
+                        <th>ASESORIAS AGENDADAS</th>
                         <th>ACTUALIZAR</th>
                         <th>ELIMINAR</th>
                     </tr>
@@ -165,6 +166,7 @@ class usuarioControlador extends usuarioModelo
                 $contador = $inicio + 1;
                 $reg_inicio = $inicio + 1;
                 foreach ($datos as $rows) {
+                    $check_asesoria = mainModel::ejecutar_consulta_simple("SELECT * FROM asesoria WHERE id_asesor='$rows[id]' OR id_estudiante='$rows[id]'");
 
                     $tabla .= '	
                         <tr class="text-center" >
@@ -173,6 +175,7 @@ class usuarioControlador extends usuarioModelo
                         <td>' . $rows['apellido_usuario'] . '</td>
                         <td>' . $rows['email_usuario'] . '</td>
                         <td>' . $rows['rol_usuario'] . '</td>
+                        <td>'.$check_asesoria->rowCount().'</td>
                         <td>
                             <a href="' . SERVERURL . 'user-update/' . mainModel::encryption($rows['id']) . '/" class="btn btn-success">
                                   <i class="fas fa-sync-alt"></i>	

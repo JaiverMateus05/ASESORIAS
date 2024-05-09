@@ -1,3 +1,13 @@
+
+<?php 
+if($_SESSION['rol_sav']!="Asesor"){
+	echo '<script>
+	window.location.href="'.SERVERURL.'home/"
+	</script>';
+	return;
+}
+
+?>
 <div class="full-box page-header">
     <h3 class="text-left">
         <i class="fa fa-book"></i> &nbsp; MI AGENDA

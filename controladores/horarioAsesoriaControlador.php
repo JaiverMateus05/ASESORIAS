@@ -59,4 +59,42 @@ class horarioAsesoriaControlador extends horarioAsesoriaModelo{
         $sql->execute();
         return $sql;
     }
+
+    public function eliminar_horario_asesoria_controlador(){
+        $id_usuario = mainModel::limpiar_cadena($_POST['usuario_id_del']);
+        $hora_asesoria = mainModel::limpiar_cadena($_POST['hora_asesoria_del']);
+
+        $check_hora = mainModel::ejecutar_consulta_simple("SELECT id_asesor,hora_asesoria FROM horario_asesorias WHERE id_asesor='$id_usuario' AND hora_asesoria='$hora_asesoria'");
+        if($check_hora->rowCount() <= 0){
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrio un error inesperado",
+                "Texto" => "La hora que desea eliminar no ha sido asigada al usuario",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        $eliminar_hora = horarioAsesoriaModelo::eliminar_horario_asesoria_modelo($id_usuario,$hora_asesoria);
+        if($eliminar_hora->rowCount() == 1){
+            $alerta = [
+                "Alerta" => "recargar",
+                "Titulo" => "Hora eliminada",
+                "Texto" => "La hora fue eliminada exitosamente",
+                "Tipo" => "success"
+            ];
+
+        }else{
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrio un error inesperado",
+                "Texto" => "No fue posible eliminar la hora",
+                "Tipo" => "error"
+            ];
+        }
+
+        echo json_encode($alerta);
+
+    }
 }

@@ -15,4 +15,11 @@ class horarioAsesoriaModelo extends mainModel{
         return $sql;
     }
 
+    protected static function eliminar_horario_asesoria_modelo($id_usuario,$hora_asesoria){
+
+        $sql=mainModel::conectar()->prepare("DELETE FROM horario_asesorias WHERE id_asesor='$id_usuario' AND hora_asesoria='$hora_asesoria'");
+        $sql->execute();
+        return $sql;
+    }
+
 }

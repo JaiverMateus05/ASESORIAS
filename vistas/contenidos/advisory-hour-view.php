@@ -1,3 +1,13 @@
+<?php 
+if($_SESSION['rol_sav']!="Administrador"){
+	echo '<script>
+	window.location.href="'.SERVERURL.'home/"
+	</script>';
+	return;
+}
+
+?>
+
 <?php
 
 function create_time_range($start, $end, $interval = '60 mins', $format = '12')
@@ -58,15 +68,16 @@ function create_time_range($start, $end, $interval = '60 mins', $format = '12')
         ?>
                 <td>
                     
-                    <form action="<?php echo SERVERURL; ?>ajax/horarioAjax.php" class="FormularioAjax" method="POST" data-form="" autocomplete="off">
+                    <form action="<?php echo SERVERURL; ?>ajax/horarioAjax.php" class="FormularioAjax" method="POST" data-form="save" autocomplete="off">
                         <input type="hidden" name="usuario_id_as" id="usuario_id"value="<?php echo $pagina[1]; ?>">
                         <input name="hora_asesoria_reg" id="hora_asesoria" value="<?php echo $dias[$a] . " " . $value; ?>" type="hidden"><br>
                         <label><?php echo $value; ?></label>
-                        <button type="submit" class="btn btn-success" style="padding: 1px 6px;"><span class="fa fa-check-square"></span></button>
+                        <button type="submit" class="btn btn-success" style="padding: 1px 6px;"><span class="fa fa-check-square"></span></button>                                   
+                    </form>
+                    <form action="<?php echo SERVERURL; ?>ajax/horarioAjax.php" class="FormularioAjax" method="POST" data-form="delete" autocomplete="off">
                         <input type="hidden" name="usuario_id_del" id="usuario_id"value="<?php echo $pagina[1]; ?>">
                         <input name="hora_asesoria_del" id="hora_asesoria" value="<?php echo $dias[$a] . " " . $value; ?>" type="hidden">
-                        <button class="btn btn-danger" style="padding: 1px 6px;"><span class="fa fa-window-close"></span></button>
-
+                        <button type="submit" class="btn btn-danger" style="padding: 1px 6px;"><span class="fa fa-window-close"></span></button>
                     </form>
                 </td>
         <?php

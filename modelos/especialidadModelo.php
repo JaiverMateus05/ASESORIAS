@@ -13,7 +13,7 @@ class especialidadModelo extends mainModel{
     }
 
     protected static function eliminar_especialidad_modelo($id){
-
+        
         $sql=mainModel::conectar()->prepare("DELETE FROM especialidad WHERE id=:ID");
         $sql->bindParam(":ID",$id);
         $sql->execute();
